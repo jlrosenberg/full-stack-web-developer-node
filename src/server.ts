@@ -12,7 +12,7 @@ app.use(express.urlencoded());
 app.use(cors());
 
 
-const port = process.env.APP_PORT ?? 4000
+const port = process.env.PORT ?? 4000
 
 helloController(app);
 userController(app);
