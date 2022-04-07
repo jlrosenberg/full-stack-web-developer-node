@@ -9,7 +9,16 @@ const findAllTuits = (req, res) =>
   const newTuit = req.body;
   newTuit._id = (new Date()).getTime()+'';
   newTuit.likes = 0;
-  tuits.push(newTuit);
+  newTuit.stats = {
+    likes: 0,
+    comments: 0,
+    retuits: 0,
+  };
+  newTuit.handle = 'handle'
+  newTuit.postedBy = {
+    username: 'someUsername'
+  }
+  tuits = [newTuit, ...tuits];
   res.json(newTuit);
  }
 
@@ -21,8 +30,10 @@ const findAllTuits = (req, res) =>
 
  
  const updateTuit = (req, res) => {
+   console.log("here")
   const tuitdIdToUpdate = req.params.tid;
   const updatedTuit = req.body;
+  console.log(updatedTuit)
   tuits = tuits.map(t => t._id === tuitdIdToUpdate ? updatedTuit : t);
   res.sendStatus(200);
  }
