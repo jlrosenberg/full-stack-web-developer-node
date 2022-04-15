@@ -4,6 +4,12 @@ const schema = new mongoose.Schema({
   likes: Number,
   postedBy: {
     username: String
+  },
+  handle: String,
+  stats: {
+    likes: Number,
+    comments: Number,
+    retuits: Number
   }
 }, {collection: 'tuits'});
 export default schema;
